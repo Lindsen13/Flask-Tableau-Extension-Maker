@@ -4,7 +4,7 @@
     <default-locale>en_US</default-locale>
     <name resource-id="name"/>
     <description>Execute API call from Tableau Dashboard</description>
-    <author name="Ivo Lindsen" email="ivo@inviso.dk" organization="Python Everything" website="https://python-everything.com/"/>
+    <author name="Ivo Lindsen" email="ivo.lindsen@hotmail.com" organization="Python Everything" website="https://python-everything.com/"/>
     <min-api-version>0.8</min-api-version>
     <source-location>
       <url>http://localhost:5000/extension/1/tableau_extension</url>
