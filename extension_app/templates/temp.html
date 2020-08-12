@@ -1,0 +1,4 @@
+<h1>Traffic</h1>
+{% for t in traffic_all %}
+<p>{{ t['id'] }} - {{ t['author_id'] }} - {{ t['extension_id'] }} - {{ t['created'] }} - {{t['extension_status_code']}}</p>
+<p>{{ t['extension_headers'] }}</p><br><br> {% endfor %}

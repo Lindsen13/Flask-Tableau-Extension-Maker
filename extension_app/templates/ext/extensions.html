@@ -1,0 +1,22 @@
+{% extends "layout.html" %} {% block title %} Extension {% endblock %} {% block head %} {{ super() }} {% endblock %} {% block content %}
+
+<h1>Extension</h1>
+{% for extension in all_extensions %}
+<article class="extension">
+    <header>
+        <div>
+            <h1>{{ extension['ext_title'] }}</h1>
+            <div class="about">by {{ extension['username'] }} on {{ extension['created'].strftime('%Y-%m-%d') }}</div>
+        </div>
+        {% if g.user['id'] == extension['author_id'] %}
+        <a class="action" href="{{ url_for('ext.update', id=extension['id']) }}">Edit</a> {% endif %}
+    </header>
+    <p>Description: <b>{{ extension['ext_description'] }}</b></p>
+    <p>Url: <b>{{ extension['ext_url'] }}</b></p>
+    <p>Payload: <b>{{ extension['ext_payload'] }}</b></p>
+    <p>Headers: <b>{{ extension['ext_headers'] }}</b></p>
+    <p>Background Colours: <b>{{ extension['ext_background_colour'] }}</b></p>
+    <p>Image: <b>{{ extension['ext_image'] }}</b></p>
+</article>
+{% if not loop.last %}
+<hr> {% endif %} {% endfor %} {% endblock %}

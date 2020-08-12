@@ -1,0 +1,32 @@
+{% extends "layout.html" %} {% block title %} About {% endblock %} {% block head %} {{ super() }} {% endblock %} {% block content %}
+
+<h1>Update</h1>
+<form method="post">
+    <label for="title">Title</label>
+    <input name="title" id="title" value="{{ request.form['title'] or extension['ext_title'] }}" required><br><br>
+
+    <label for="description">Description</label>
+    <input name="description" id="description" value="{{ request.form['description'] or extension['ext_description'] }}" required><br><br>
+
+    <label for="url">Url</label>
+    <input name="url" id="url" value="{{ request.form['url'] or extension['ext_url'] }}" required><br><br>
+
+    <label for="payload">Payload</label>
+    <textarea name="payload" id="payload">{{ request.form['payload'] or extension['ext_payload'] }}</textarea><br><br>
+
+    <label for="headers">Headers</label>
+    <textarea name="headers" id="headers">{{ request.form['headers'] or extension['ext_headers'] }}</textarea><br><br>
+
+    <label for="background_colour">Background Colour</label>
+    <input type="color" id="background_colour" name="background_colour" value="{{ request.form['background_colour'] or extension['ext_background_colour'] }}"><br><br>
+
+    <label for="image">Image</label>
+    <input name="image" id="image" value="{{ request.form['image'] or extension['ext_image'] }}"><br><br>
+
+    <input type="submit" value="Save">
+</form>
+<hr>
+<form action="{{ url_for('ext.delete', id=extension['id']) }}" method="post">
+    <input class="danger" type="submit" value="Delete" onclick="return confirm('Are you sure?');">
+</form>
+{% endblock %}

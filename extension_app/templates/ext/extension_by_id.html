@@ -1,0 +1,36 @@
+{% extends "layout.html" %} {% block title %} Extension {% endblock %} {% block head %} {{ super() }} {% endblock %} {% block content %}
+
+<h1>Extension</h1>
+
+<article class="extension">
+    <header>
+        <div>
+            <h1>{{ extension['ext_title'] }}</h1>
+            <div class="about">by {{ extension['username'] }} on {{ extension['created'].strftime('%Y-%m-%d') }}</div>
+        </div>
+        {% if g.user['id'] == extension['author_id'] %}
+        <a class="action" href="{{ url_for('ext.update', id=extension['id']) }}">Edit</a> {% endif %}
+    </header>
+    <p>Description: <b>{{ extension['ext_description'] }}</b></p>
+    <p>Url: <b>{{ extension['ext_url'] }}</b></p>
+    <p>Payload: <b>{{ extension['ext_payload'] }}</b></p>
+    <p>Headers: <b>{{ extension['ext_headers'] }}</b></p>
+    <p>Background Colours: <b>{{ extension['ext_background_colour'] }}</b></p>
+    <p>Image: <b>{{ extension['ext_image'] }}</b></p>
+
+
+    <a href="{{ url_for('ext.send_file', id=extension['id']) }}">
+        <h2>Download file here</h2>
+    </a>
+    <h2>Logs:</h3>
+        {% for log in extension_log %}
+        <h4>
+            <p>Invoke id: {{ log['id'] }}</p>
+        </h4>
+        <p>Invoke time: {{ log['created'] }}</p>
+        <p>Invoke status: {{ log['extension_status_code'] }}</p>
+        <p>Invoke return headers: {{ log['extension_headers'] }}</p>
+        <p>Invoke comment: {{ log['comment'] }}</p>
+        {% endfor %}
+</article>
+<hr> {% endblock %}

@@ -1,0 +1,8 @@
+{% extends "layout.html" %} {% block title %} Extension {% endblock %} {% block head %} {{ super() }} {% endblock %} {% block content %}
+
+<h1>Error</h1>
+<p class="important">
+    {{ error_message }}
+</p>
+
+{% endblock %}
