@@ -17,4 +17,4 @@ flask run
 
 Your application will run on http://localhost:5000/
 
-*Note, the application has it's backend developed only. The front end is just the bare minimum.*
+*Note, the application has its backend developed only. The front end is just the bare minimum.*
